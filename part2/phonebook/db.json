@@ -1,0 +1,35 @@
+{
+  "persons": [
+    {
+      "name": "Ada Lovelace",
+      "number": "39-44-5323523",
+      "id": 2,
+      "phno": "29910-299"
+    },
+    {
+      "name": "Dan Abramov",
+      "number": "12-43-234345",
+      "id": 3
+    },
+    {
+      "name": "rama ",
+      "phno": "34245-34720",
+      "id": 5
+    },
+    {
+      "name": "shiva",
+      "phno": "96",
+      "id": 6
+    },
+    {
+      "name": "krishna",
+      "phno": "42",
+      "id": 7
+    },
+    {
+      "name": "ram",
+      "phno": "92",
+      "id": 8
+    }
+  ]
+}
