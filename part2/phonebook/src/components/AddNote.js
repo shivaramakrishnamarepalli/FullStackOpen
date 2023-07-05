@@ -2,14 +2,14 @@ import React from "react"
 
 export default function AddNote({persons,setPersons,personService,setNotification}){
 
-    const [newPerson, setNewPerson] = React.useState({name : '',phno : ''})
+    const [newPerson, setNewPerson] = React.useState({name : '',number : ''})
     let confirm = false
     let per
   
     const handleSubmit = (event) => {
       event.preventDefault();
     
-      if (newPerson.name === "" || newPerson.phno === "") {
+      if (newPerson.name === "" || newPerson.number === "") {
         alert("Null values are not accepted");
         return;
       }
@@ -21,18 +21,18 @@ export default function AddNote({persons,setPersons,personService,setNotificatio
     
         if (confirm) {
           personService
-            .updateNum(per, newPerson.phno)
+            .updateNum(per, newPerson.number)
             .then(() => personService.getAll())
             .then((updatedPersons) => {
               setPersons(updatedPersons);
-              setNewPerson({ name: "", phno: "" });
+              setNewPerson({ name: "", number: "" });
             })
             .catch((error) => {
               console.error("Error updating person:", error);
             });
         }
-      } else if (persons.find((person) => person.phno === newPerson.phno)) {
-        alert(`${newPerson.phno} is already used`);
+      } else if (persons.find((person) => person.number === newPerson.number)) {
+        alert(`${newPerson.number} is already used`);
       } else {
         personService
           .create(newPerson)
@@ -41,7 +41,7 @@ export default function AddNote({persons,setPersons,personService,setNotificatio
               .then(([updatedPersons]) => {
                 setPersons(updatedPersons);
                 setNotification(`Added ${newPerson.name}`)
-                setNewPerson({ name: "", phno: "" });
+                setNewPerson({ name: "", number: "" });
                 setTimeout(()=>{
                   setNotification(null)
                 },5000)
@@ -63,10 +63,10 @@ export default function AddNote({persons,setPersons,personService,setNotificatio
       })
     }
   
-    const handlePhnoChange = (event) => {
+    const handlenumberChange = (event) => {
       setNewPerson({
         ...newPerson,
-        phno : event.target.value
+        number : event.target.value
       })
     }
   
@@ -78,7 +78,7 @@ export default function AddNote({persons,setPersons,personService,setNotificatio
             name: <input value={newPerson.name} onChange={handleNameChange}/>
           </div>
           <div>
-            Phno: <input value={newPerson.phno} onChange={handlePhnoChange}/>
+            number: <input value={newPerson.number} onChange={handlenumberChange}/>
           </div>
           <div>
             <button type="submit">add</button>
