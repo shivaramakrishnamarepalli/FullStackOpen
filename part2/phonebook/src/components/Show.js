@@ -22,7 +22,6 @@ export default function Show({ persons, value,deleteContact}) {
         Array.isArray(persons) &&
         persons.map((person) => (
           <li key={person.name+person.id}>
-            {console.log(person)}
             {person.name} {person.number} <button onClick={()=>deleteContact(person.id)}>delete</button>
           </li>
         ))
